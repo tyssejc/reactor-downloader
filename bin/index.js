@@ -92,7 +92,7 @@ yargs
     production: {
       name: 'production',
       ims: 'https://ims-na1.adobelogin.com',
-      jwt: 'https://ims-na1.adobelogin.com/ims/exchange/jwt',
+      jwt: 'https://ims-na1.adobelogin.com/ims/token/v3',
       aud: 'https://ims-na1.adobelogin.com/c/',
       scope: 'https://ims-na1.adobelogin.com/s/',
       reactorUrl: 'https://reactor.adobe.io',
@@ -100,7 +100,7 @@ yargs
     integration: {
       name: 'integration',
       ims: 'https://ims-na1.adobelogin.com',
-      jwt: 'https://ims-na1.adobelogin.com/ims/exchange/jwt',
+      jwt: 'https://ims-na1.adobelogin.com/ims/token/v3',
       aud: 'https://ims-na1.adobelogin.com/c/',
       scope: 'https://ims-na1.adobelogin.com/s/',
       reactorUrl: 'https://reactor-integration.adobe.io',
@@ -108,7 +108,7 @@ yargs
     qe: {
       name: 'qe',
       ims: 'https://ims-na1-stg1.adobelogin.com',
-      jwt: 'https://ims-na1-stg1.adobelogin.com/ims/exchange/jwt',
+      jwt: 'https://ims-na1-stg1.adobelogin.com/ims/token/v3',
       aud: 'https://ims-na1-stg1.adobelogin.com/c/',
       scope: 'https://ims-na1-stg1.adobelogin.com/s/',
       reactorUrl: 'https://reactor-qe.adobe.io',
@@ -116,7 +116,7 @@ yargs
     development: {
       name: 'development',
       ims: 'https://ims-na1-stg1.adobelogin.com',
-      jwt: 'https://ims-na1-stg1.adobelogin.com/ims/exchange/jwt',
+      jwt: 'https://ims-na1-stg1.adobelogin.com/ims/token/v3',
       aud: 'https://ims-na1-stg1.adobelogin.com/c/',
       scope: 'https://ims-na1-stg1.adobelogin.com/s/',
       reactorUrl: 'https://reactor-dev.adobe.io',
@@ -176,6 +176,7 @@ yargs
 
     // getAccessToken
     args.accessToken = await getAccessToken(args);
+    console.log('Access token: ',args.accessToken);
     
   // otherwise try the admin metascope...
   // TODO: add other metascopes...

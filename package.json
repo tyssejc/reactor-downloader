@@ -1,11 +1,11 @@
 {
-  "name": "@adobe/reactor-downloader",
-  "version": "0.2.1",
+  "name": "@tyssejc/reactor-downloader",
+  "version": "0.3.0",
   "description": "Command line tool for downloading data from Adobe Launch to a local directory.",
   "author": {
-    "name": "Adobe Systems",
-    "url": "http://adobe.com",
-    "email": "bbythewa@adobe.com"
+    "name": "Charlie Tysse",
+    "url": "https://ctysse.net",
+    "email": "charlie@ctysse.net"
   },
   "engines": {
     "node": "^16.20.2"
@@ -13,7 +13,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:adobe/reactor-downloader.git"
+    "url": "git@github.com:tyssejc/reactor-downloader.git"
   },
   "keywords": [
     "launch",
@@ -28,10 +28,9 @@
     "eslint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
-    "@adobe/jwt-auth": "^0.3.1",
     "@adobe/reactor-sdk": "^1.0.5",
     "inquirer": "^6.3.1",
-    "jwt-simple": "^0.5.6",
+    "node-fetch-cjs": "^3.3.2",
     "ora": "^3.4.0",
     "request": "^2.88.0",
     "request-debug": "^0.2.0",

@@ -11,9 +11,7 @@ governing permissions and limitations under the License.
 */
 
 const fs = require('fs');
-const jwt = require('jwt-simple');
-// const request = require('request-promise-native');
-const auth = require('@adobe/jwt-auth');
+const { default: fetch } = require('node-fetch-cjs');
 
 module.exports = async (settings) => {
 
@@ -58,34 +56,37 @@ module.exports = async (settings) => {
     throw Error('Private Key file does not exist at that location.');
   }
 
-  // generate a jwtToken
-  // integration.payload.exp = Math.floor(Date.now() / 1000) + 60 * 60 * 24;
-  // const jwtToken = jwt.encode(integration.payload, privateKeyContent, 'RS256');
-
-  // Make a request to exchange the jwt token for a bearer token
-  // const body = await request({
-  //   method: 'POST',
-  //   url: environment.jwt,
-  //   headers: {
-  //     'Cache-Control': 'no-cache'
-  //   },
-  //   form: {
-  //     client_id: integration.clientId,
-  //     client_secret: integration.clientSecret,
-  //     jwt_token: jwtToken
-  //   },
-  //   transform: JSON.parse
-  // });
-  const body = await auth({
-    clientId: integration.clientId,
-    technicalAccountId: integration.techAccountId,
-    orgId: integration.orgId,
-    clientSecret: integration.clientSecret,
-    privateKey: privateKeyContent,
-    metaScopes: [`${environment.scope}ent_reactor_sdk`],
-    ims: environment.ims,
+  // Honestly have no idea what to do here. Launch requires an OAuth2 Client Credentials grant.
+  // Tried using passportjs but it was not intuitive.
+  // There is an AdobeStrategy but it's 6 years old (uses Adobe IMS v1; current version is 3)
+  // @see https://github.com/adobe/passport-adobe-oauth2/blob/master/lib/passport-adobe-oauth2/strategy.js
+  // I could try and fork this strategy to make it work for v3 but at this point I'm not willing to sink any
+  // more time into it.
+  const clientId = integration.clientId;
+  const clientSecret = integration.clientSecret;
+  const scope = 'AdobeID,openid,read_organizations,additional_info.job_function,additional_info.projectedProductContext,additional_info.roles';
+  
+  const tokenUrl = 'https://ims-na1.adobelogin.com/ims/token/v3';
+  const body = new URLSearchParams({
+    client_id: clientId,
+    client_secret: clientSecret,
+    grant_type: 'client_credentials',
+    scope
   });
+  
+  const accessToken = await fetch(tokenUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body
+  })
+  .then(response => response.json())
+  .then(data => {
+    return data.access_token;
+  })
+  .catch(error => console.error(error));
 
-  return body.access_token;
+  return accessToken;
 
 };
