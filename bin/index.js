@@ -176,7 +176,6 @@ yargs
 
     // getAccessToken
     args.accessToken = await getAccessToken(args);
-    console.log('Access token: ',args.accessToken);
     
   // otherwise try the admin metascope...
   // TODO: add other metascopes...
