@@ -1,20 +1,27 @@
 # reactor-downloader
 
-:warning: **This repo is no longer maintained** Due to time constraints, I am no longer maintaining this repository any longer.  I'm archiving it and leaving it read-only so that you can use it as an example of how you might implement something like this on your own.  Feel free to fork and modify it to your needs.
+> [!NOTE]
+> This is a standalone fork of the [@adobe/reactor-downloader](https://github.com/adobe/reactor-downloader) project, which is no longer being maintained. Kudos to @bbythewa and @mikeumus for building the original. Contributions welcome!
 
 Command line tool for downloading a Launch property to a local directory.
 
-## Usage
+## Usage and Installation
 
 Before running the downloader tool, you must first have [Node.js](https://nodejs.org/en/) installed on your computer. Your npm version (npm comes bundled with Node.js) will need to be at least 10.15.0. You can check the installed version by running the following command from a command line:
-                                                                                                      
+
 ```
 npm -v
 ```
 
+So long as you are using npm version 10.5.0 or above, you should be able to successfully install the downloader by running:
+
+```
+npm i
+```
+
 You will also need to be authorized to use the Launch APIs. This is done by first creating an integration through Adobe I/O. Please see the [Access Tokens Guide](https://developer.adobelaunch.com/api/guides/access_tokens/) for detailed steps on creating an integration and procuring api access rights.
 
-Finally, you must first have created a property in Adobe Launch to download. 
+Finally, you must first have created a property in Adobe Launch to download.
 
 Once you have a property ready to download and have an integraton created through Adobe I/O that can access the Adobe Launch APIs, you can use the bootstrapper tool in either a question-answer format or by passing information through command line arguments.
 
@@ -26,7 +33,11 @@ To use the downloader in a question-answer format, run it by executing the follo
 npx @adobe/reactor-downloader
 ```
 
-The tool will ask for any information necessary to download the repository.
+The tool will ask for any information necessary to download the repository.  If by chance you get an error when trying to run this command that is similar to `sh: reactor-downloader: command not found`, run the following command and try rerunning the script once done:
+
+```
+npm i -S @adobe/reactor-downloader
+```
 
 ### Command Line Arguments
 
@@ -40,7 +51,7 @@ The named parameters are as follows:
 
 ##### --private-key (for authentication using an Adobe I/O integration)
 
-The local path (relative or absolute) to the RSA private key. Instructions on how to generate this key can be found in the [Getting Started guide](https://developer.adobelaunch.com/guides/extensions/getting-started/) and should have been used when creating your integration through the Adobe I/O console.
+The local path (relative or absolute) to the RSA private key. Instructions on how to generate this key can be found in the [Getting Started guide](https://developer.adobelaunch.com/api/guides/access_tokens/#authentication-for-each-session) and should have been used when creating your integration through the Adobe I/O console.
 
 ##### --org-id (for authentication using an Adobe I/O integration)
 
@@ -75,11 +86,11 @@ The location to save the settings.  The file name should end in ".json".  (defau
 This tool can be used in many ways, but here are a few suggested uses:
 
 - use in conjunction with [reactor-sync](https://github.com/adobe/reactor-sync).
-- If you are already storing the code that goes into Launch in repositories, this tool will be your best friend.  
+- If you are already storing the code that goes into Launch in repositories, this tool will be your best friend.
   - bootstrap your repository with a current Launch Property and all of it's code without having to download everything from Launch manually.
 - Run automated tests to ensure that your code doesn't have any obvious errors.
 - Run transpiles on your code automatically and then automatically sync it into Launch.
-- Run linters or code style enforcement tools to ensure that your code is always clean and you can always point to who is writing code in Launch that doesn't stay to standards. 
+- Run linters or code style enforcement tools to ensure that your code is always clean and you can always point to who is writing code in Launch that doesn't stay to standards.
 
 If you have other use cases, let me know and I can update this list.
 
