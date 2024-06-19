@@ -1,45 +1,46 @@
 {
-  "name": "@adobe/reactor-downloader",
-  "version": "0.2.1",
-  "description": "Command line tool for downloading data from Adobe Launch to a local directory.",
-  "author": {
-    "name": "Adobe Systems",
-    "url": "http://adobe.com",
-    "email": "bbythewa@adobe.com"
-  },
-  "engines": {
-    "node": "^16.20.2"
-  },
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:adobe/reactor-downloader.git"
-  },
-  "keywords": [
-    "launch",
-    "reactor",
-    "downloader"
-  ],
-  "main": "./bin/download.js",
-  "bin": {
-    "reactor-downloader": "./bin/index.js"
-  },
-  "scripts": {
-    "eslint": "./node_modules/.bin/eslint ."
-  },
-  "dependencies": {
-    "@adobe/jwt-auth": "^0.3.1",
-    "@adobe/reactor-sdk": "^1.0.5",
-    "inquirer": "^6.3.1",
-    "jwt-simple": "^0.5.6",
-    "ora": "^3.4.0",
-    "request": "^2.88.0",
-    "request-debug": "^0.2.0",
-    "request-promise-native": "^1.0.7",
-    "sanitize-filename": "^1.6.1",
-    "yargs": "^11.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0"
-  }
+	"name": "@adobe/reactor-downloader",
+	"version": "0.2.1",
+	"description": "Command line tool for downloading data from Adobe Launch to a local directory.",
+	"author": {
+		"name": "Adobe Systems",
+		"url": "http://adobe.com",
+		"email": "bbythewa@adobe.com"
+	},
+	"engines": {
+		"node": "^18.20.2"
+	},
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:adobe/reactor-downloader.git"
+	},
+	"keywords": [
+		"launch",
+		"reactor",
+		"downloader"
+	],
+	"main": "./bin/download.js",
+	"bin": {
+		"reactor-downloader": "./bin/index.js"
+	},
+	"scripts": {
+		"eslint": "./node_modules/.bin/eslint ."
+	},
+	"dependencies": {
+		"@adobe/jwt-auth": "latest",
+		"@adobe/reactor-downloader": "^0.2.1",
+		"@adobe/reactor-sdk": "latest",
+		"inquirer": "^6.3.1",
+		"jwt-simple": "^0.5.6",
+		"ora": "^3.4.0",
+		"request": "latest",
+		"request-debug": "latest",
+		"request-promise-native": "latest",
+		"sanitize-filename": "^1.6.1",
+		"yargs": "^11.0.0"
+	},
+	"devDependencies": {
+		"eslint": "latest"
+	}
 }
