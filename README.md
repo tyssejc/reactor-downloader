@@ -7,7 +7,7 @@ Command line tool for downloading a Launch property to a local directory.
 
 ## Usage and Installation
 
-Before running the downloader tool, you must first have [Node.js](https://nodejs.org/en/) installed on your computer. Your npm version (npm comes bundled with Node.js) will need to be at least 10.15.0. You can check the installed version by running the following command from a command line:
+Running this tool is currently required to generate your `.reactor-settings.json` file for the Launch Property you want to use in [@adobe/reactor-sync](https://github.com/adobe/reactor-sync).  Before running the downloader tool, you must first have [Node.js](https://nodejs.org/en/) installed on your computer. Your npm version (npm comes bundled with Node.js) will need to be at least 10.15.0. You can check the installed version by running the following command from a command line:
 
 ```
 npm -v
