@@ -61,4 +61,8 @@ typings/
 .next
 
 # reactor settings
-.reactor-settings.json
+.reactor-settings.*
+
+# Output
+_*
+PR*
